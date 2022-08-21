@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Orbitron&family=Satisfy&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #ddd;
+        }
+        .container{
+            background: #dfd8d0;
+        }
+        h2{
+            font-size: 18px;
+            text-align: center;
+        }
+        input[type="button"]{
+            width: 67px;
+            height: 67px;
+            background: #3a3a3a;
+            color: white;
+            font-size: 24px;
+            border-radius: 10px;
+            margin-left: 7px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+        }
+        #kq{
+            width: 95%;
+            height: 40px;
+            background: #c3c2ab;
+            border: solid 2px #b4b39d;
+            font-size: 20px;
+            padding: 10px;
+            outline: none;
+            margin: 5px 10px;
+            border-radius: 6px;
+        }
+        table{
+            width: 100%;
+        }
+        input[value="0"]{
+            width: 150px;
+        }
+        input[value="="]{
+            height: 144px;
+        }
+        input[value = 'C'], input[value='<']{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>ELECTRONIC CALCULATOR</h2>
+        <input id="kq" type="text">
+        <table>
+            <tr>
+                <td><input type="button" Value="C" onclick="removeAll()"></td>
+                <td><input type="button" Value="<" onclick="removeLast()"></td>
+                <td><input type="button" Value="/" onclick="add('/')"></td>
+                <td><input type="button" Value="X" onclick="add('*')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" Value="7" onclick="add('7')"></td>
+                <td><input type="button" Value="8" onclick="add('8')"></td>
+                <td><input type="button" Value="9" onclick="add('9')"></td>
+                <td><input type="button" Value="-" onclick="add('-')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" Value="4" onclick="add('4')"></td>
+                <td><input type="button" Value="5" onclick="add('5')"></td>
+                <td><input type="button" Value="6" onclick="add('6')"></td>
+                <td><input type="button" Value="+" onclick="add('+')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" Value="1" onclick="add('1')"></td>
+                <td><input type="button" Value="2" onclick="add('2')"></td>
+                <td><input type="button" Value="3" onclick="add('3')"></td>
+                <td rowspan="2"><input type="button" Value="=" onclick="calc()" ></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="button" Value="0" onclick="add('0')"></td>
+                <td><input type="button" Value="." onclick="add('.')"></td>
+            </tr>
+        </table>
+           
+    </div>
+    <script>
+        var kq=document.getElementById("kq");
+        function add(x){
+            kq.value=kq.value+x;
+        }
+        function calc(){
+            if(kq.value != ''){
+                kq.value = eval(kq.value);
+            }
+        }
+        function removeAll (){
+            kq.value = "";
+        }
+        // function removeLast(){
+        //     var temp = kq.value;
+        //     kq.value= temp.slice(0, -1);
+        // }
+        function removeLast(){
+            var temp = kq.value;
+            kq.value = temp.substring (0, temp.length-1);
+        }
+    </script>
+</body>
+</html>
